@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  rest-api-go:
+    build:
+      dockerfile: docker/rest-api-builder.dockerfile
+    working_dir: /service/    
+    image: rest-api:latest
+    container_name: rest-api-go
+    command: go run main.go  
+    ports:
+      - "12000:12000"
+    volumes:
+      - ../main.go:/service/main.go
+    labels:
+      -  rest-api-deploy      
